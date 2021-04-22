@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.8.0-cw-1.0 (2021-04-22)
+
+
+### Features
+
+* Get custom result for CSS Modules [#1](https://github.com/carwale/mini-css-extract-plugin/pull/1)
+
+
+
 ## [0.8.0](https://github.com/webpack-contrib/mini-css-extract-plugin/compare/v0.7.0...v0.8.0) (2019-07-16)
 
 
