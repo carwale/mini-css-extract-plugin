@@ -16,3 +16,4 @@ Thumbs.db
 *.sublime-workspace
 .idea
 *.iml
+package-lock.json

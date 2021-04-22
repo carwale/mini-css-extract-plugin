@@ -1,5 +1,5 @@
 {
-  "name": "mini-css-extract-plugin",
+  "name": "cw-mini-css-extract-plugin",
   "version": "0.8.0",
   "description": "extracts CSS into separate files",
   "license": "MIT",
