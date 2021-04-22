@@ -11,6 +11,7 @@ import LimitChunkCountPlugin from 'webpack/lib/optimize/LimitChunkCountPlugin';
 import validateOptions from 'schema-utils';
 
 import schema from './options.json';
+import { isCSSModulesFile, getCustomResult } from './css-modules';
 
 const MODULE_TYPE = 'css/mini-extract';
 const pluginName = 'mini-css-extract-plugin';
@@ -176,15 +177,27 @@ export function pitch(request) {
           };
         });
       }
-      this[MODULE_TYPE](text);
+
+      // restrict css modules code from getting included in extracted css file
+      if (!isCSSModulesFile(this)) {
+        this[MODULE_TYPE](text);
+      }
     } catch (e) {
       return callback(e);
     }
 
     let resultSource = `// extracted by ${pluginName}`;
-    const result = locals
-      ? `\nmodule.exports = ${JSON.stringify(locals)};`
-      : '';
+    let result = '';
+
+    if (locals) {
+      if (isCSSModulesFile(this)) {
+        result = getCustomResult(this, text, locals);
+      } else {
+        result = `\nmodule.exports = ${JSON.stringify(locals)};`;
+      }
+    } else {
+      result = '';
+    }
 
     resultSource += options.hmr
       ? hotLoader(result, { context: this.context, options, locals })

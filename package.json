@@ -39,8 +39,11 @@
     "webpack": "^4.4.0"
   },
   "dependencies": {
-    "loader-utils": "^1.1.0",
+    "cssesc": "3.0.0",
+    "loader-utils": "1.4.0",
+    "normalize-path": "3.0.0",
     "normalize-url": "1.9.1",
+    "postcss": "^7.0.35",
     "schema-utils": "^1.0.0",
     "webpack-sources": "^1.1.0"
   },
