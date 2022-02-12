@@ -1,5 +1,6 @@
 const path = require("path");
 
+const { isCSSModulesFile, getCustomResult } = require("./css-modules");
 const {
   findModuleById,
   evalModuleCode,
@@ -214,8 +215,10 @@ function pitch(request) {
           }
         );
       }
-
-      addDependencies(dependencies);
+      // restrict css modules code from getting included in extracted css file
+      if (!isCSSModulesFile(this)) {
+        addDependencies(dependencies);
+      }
     } catch (e) {
       callback(/** @type {Error} */ (e));
 
@@ -223,7 +226,9 @@ function pitch(request) {
     }
 
     const result = locals
-      ? namedExport
+      ? isCSSModulesFile(this)
+        ? getCustomResult(this, originalExports, locals)
+        : namedExport
         ? Object.keys(locals)
             .map(
               (key) =>
@@ -345,6 +350,7 @@ function pitch(request) {
   };
   childCompiler.options.module.parser.javascript = {
     ...childCompiler.options.module.parser.javascript,
+    // @ts-ignore
     url: "relative",
   };
 
