@@ -48,6 +48,10 @@
     "webpack": "^5.0.0"
   },
   "dependencies": {
+    "cssesc": "3.0.0",
+    "loader-utils": "3.2.0",
+    "normalize-path": "3.0.0",
+    "postcss": "8.4.6",
     "schema-utils": "^4.0.0"
   },
   "devDependencies": {
@@ -57,6 +61,9 @@
     "@babel/preset-env": "^7.16.11",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@types/cssesc": "^3.0.0",
+    "@types/loader-utils": "^2.0.3",
+    "@types/normalize-path": "^3.0.0",
     "@webpack-contrib/eslint-config-webpack": "^3.0.0",
     "babel-jest": "^27.5.0",
     "bootstrap": "^4.6.0",
