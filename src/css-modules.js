@@ -1,9 +1,11 @@
 import path from "path";
 
 import postcss from "postcss";
-import { interpolateName } from "loader-utils";
 import normalizePath from "normalize-path";
 import cssesc from "cssesc";
+import { interpolateName } from "loader-utils";
+
+/** @typedef {import("./index.js").LoaderOptions} LoaderOptions */
 
 // Source: https://github.com/webpack-contrib/css-loader/blob/v3.5.2/src/utils.js
 
@@ -14,7 +16,7 @@ const reControlChars = /[\u0000-\u001f\u0080-\u009f]/g;
 const reRelativePath = /^\.+/;
 
 /**
- * @param {{ rootContext: any; resourcePath: string; }} loaderContext
+ * @param {import("webpack").LoaderContext<LoaderOptions>} loaderContext
  * @param {string} localIdentName
  */
 function getLocalIdent(loaderContext, localIdentName) {
@@ -62,11 +64,16 @@ function isCSSModulesFile(loaderContext) {
 
 /**
  * @param {any} loaderContext
- * @param {string | any[]} text
  * @param {any} locals
+ * @param {{ default: string | any[]; }} text
  */
 function getCustomResult(loaderContext, text, locals) {
-  const cssContent = text.length > 0 ? text[0].content || "" : "";
+  const cssContent =
+    text.default.length > 0
+      ? text.default[0].length > 1
+        ? text.default[0][1] || ""
+        : ""
+      : "";
   const cssRoot = postcss.parse(cssContent);
   const cssRules = new Set();
 

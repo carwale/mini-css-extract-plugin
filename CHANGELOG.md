@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.5.3-cw-1.1 (2022-02-15)
+
+### Features
+* Fixed css text extraction
+* Stopped building types due to some incompatibility with [loader-utils](https://github.com/webpack/loader-utils/issues/179)
+
+## 2.5.3-cw-1.0 (2022-02-14)
+
+
+### Features
+
+* Get custom result for CSS Modules [#2](https://github.com/carwale/mini-css-extract-plugin/pull/2)
+
 ### [2.5.3](https://github.com/webpack-contrib/mini-css-extract-plugin/compare/v2.5.2...v2.5.3) (2022-01-25)
 
 

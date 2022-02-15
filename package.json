@@ -1,6 +1,6 @@
 {
   "name": "cw-mini-css-extract-plugin",
-  "version": "2.5.3",
+  "version": "2.5.3-cw-1.1",
   "description": "extracts CSS into separate files",
   "license": "MIT",
   "repository": "webpack-contrib/mini-css-extract-plugin",
@@ -12,14 +12,12 @@
     "url": "https://opencollective.com/webpack"
   },
   "main": "dist/index.js",
-  "types": "types/index.d.ts",
   "engines": {
     "node": ">= 12.13.0"
   },
   "scripts": {
     "start": "npm run build -- -w",
     "prebuild": "npm run clean",
-    "build:types": "tsc --declaration --emitDeclarationOnly --outDir types && prettier \"types/**/*.ts\" --write",
     "build:code": "cross-env NODE_ENV=production babel src -d dist --copy-files",
     "build": "npm-run-all -p \"build:**\"",
     "postbuild": "es-check es5 dist/hmr/hotModuleReplacement.js",
@@ -41,8 +39,7 @@
     "test": "cross-env NODE_ENV=test npm run test:coverage"
   },
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
   "peerDependencies": {
     "webpack": "^5.0.0"
